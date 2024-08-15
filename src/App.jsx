@@ -1,16 +1,21 @@
-import { CVUpdater } from './components/CVUpdater';
+import { Updater } from './components/Updater';
 import { CV } from './components/CV';
-import './styles/index.css';
+import { useState } from 'react';
+import './index.css';
 
-function App() {
+export function App() {
+  const [pvtInfo, setPvtInfo] = useState({
+    fullname: 'Kenny McCormick',
+    email: 'mail@email.com',
+    phone: '+53324',
+  });
+
   return (
     <>
       <main className="main">
-        <CVUpdater />
-        <CV />
+        <Updater pvtInfo={pvtInfo} setPvtInfo={setPvtInfo} />
+        <CV personal={pvtInfo} />
       </main>
     </>
   );
 }
-
-export default App;
