@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'metropolitano';
+  src: url('../assets/Metropolitano-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'metropolitano', sans-serif;
+  line-height: 1.7;
+}
+
+.main {
+  display: flex;
+  gap: 3rem;
+  margin: 2rem auto;
+  max-width: 90rem;
+  padding: 2rem;
+}
+
+.cv {
+  background: #b84b4b;
+  flex: 5;
+}
+
+.updater {
+  background: #98e046;
+  flex: 3;
+}
