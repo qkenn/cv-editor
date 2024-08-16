@@ -1,20 +1,69 @@
 import { Updater } from './components/Updater';
 import { CV } from './components/CV';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './index.css';
 
 export function App() {
-  const [pvtInfo, setPvtInfo] = useState({
+  const [personalInfo, setPersonalInfo] = useState({
     fullname: 'Kenny McCormick',
-    email: 'mail@email.com',
-    phone: '+53324',
+    email: 'kenny@mail.com',
+    phone: '+324523562',
   });
+
+  const [eduInfo, setEduInfo] = useState([
+    {
+      id: uuidv4(),
+      institute: 'MIT',
+      study: 'Law',
+      start: '12222',
+      end: '1455',
+    },
+    {
+      id: uuidv4(),
+      institute: 'Harvard',
+      study: 'Law',
+      start: '12222',
+      end: '1455',
+    },
+    {
+      id: uuidv4(),
+      institute: 'Stanford',
+      study: 'Law',
+      start: '12222',
+      end: '1455',
+    },
+  ]);
+
+  function handlePersonalInfo(value, property) {
+    const clone = { ...personalInfo };
+    clone[property] = value;
+
+    setPersonalInfo(clone);
+  }
+
+  function handleEduInfo(value, id, property) {
+    const updatedArray = eduInfo.map((el) => {
+      if (el.id == id) {
+        el[property] = value;
+      }
+
+      return el;
+    });
+
+    setEduInfo(updatedArray);
+  }
 
   return (
     <>
       <main className="main">
-        <Updater pvtInfo={pvtInfo} setPvtInfo={setPvtInfo} />
-        <CV personal={pvtInfo} />
+        <Updater
+          personalInfo={personalInfo}
+          personalHandler={handlePersonalInfo}
+          eduInfo={eduInfo}
+          eduHandler={handleEduInfo}
+        />
+        <CV personalInfo={personalInfo} eduInfo={eduInfo} />
       </main>
     </>
   );

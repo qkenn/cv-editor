@@ -1,20 +1,18 @@
-export function Personal({ pvtInfo, setPvtInfo }) {
+export function Personal({ personalInfo, handler }) {
   return (
     <>
-      <div className="field">
+      <div className="updater-section">
         <h2>Personal Details</h2>
 
-        <form>
+        <form className="form">
           <div className="form-field">
             <label htmlFor="fullname">Full name</label>
             <input
               type="text"
-              name="fullname"
               id="fullname"
-              value={pvtInfo.fullname}
-              onChange={(e) =>
-                setPvtInfo({ ...pvtInfo, fullname: e.target.value })
-              }
+              className="input-field"
+              value={personalInfo.fullname}
+              onChange={(e) => handler(e.target.value, 'fullname')}
             />
           </div>
 
@@ -22,12 +20,10 @@ export function Personal({ pvtInfo, setPvtInfo }) {
             <label htmlFor="email">Email</label>
             <input
               type="email"
-              name="email"
               id="email"
-              value={pvtInfo.email}
-              onChange={(e) =>
-                setPvtInfo({ ...pvtInfo, email: e.target.value })
-              }
+              className="input-field"
+              value={personalInfo.email}
+              onChange={(e) => handler(e.target.value, 'email')}
             />
           </div>
 
@@ -35,12 +31,10 @@ export function Personal({ pvtInfo, setPvtInfo }) {
             <label htmlFor="phone">Phone number</label>
             <input
               type="text"
-              name="phone"
               id="phone"
-              value={pvtInfo.phone}
-              onChange={(e) =>
-                setPvtInfo({ ...pvtInfo, phone: e.target.value })
-              }
+              className="input-field"
+              value={personalInfo.phone}
+              onChange={(e) => handler(e.target.value, 'phone')}
             />
           </div>
         </form>
