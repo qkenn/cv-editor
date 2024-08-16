@@ -1,43 +1,71 @@
-export function Personal({ personalInfo, handler }) {
+import { useState } from 'react';
+
+export function Personal({ personalDetails, personalHandler }) {
+  const [editMode, setEditMode] = useState(false);
+
+  const [userData, setUserData] = useState({
+    fullname: personalDetails.fullname,
+    email: personalDetails.email,
+    phone: personalDetails.phone,
+  });
+
+  function handleForm(e) {
+    e.preventDefault();
+    personalHandler(userData);
+  }
+
   return (
     <>
       <div className="updater-section">
-        <h2>Personal Details</h2>
+        <div className="updater-header">
+          <h2>Personal Details</h2>
+          <button onClick={() => setEditMode((prev) => !prev)}>edit</button>
+        </div>
 
-        <form className="form">
-          <div className="form-field">
-            <label htmlFor="fullname">Full name</label>
-            <input
-              type="text"
-              id="fullname"
-              className="input-field"
-              value={personalInfo.fullname}
-              onChange={(e) => handler(e.target.value, 'fullname')}
-            />
-          </div>
+        {editMode && (
+          <form className="form">
+            <div className="form-field">
+              <label htmlFor="fullname">Full name</label>
+              <input
+                type="text"
+                id="fullname"
+                className="input-field"
+                value={userData.fullname}
+                onChange={(e) =>
+                  setUserData({ ...userData, fullname: e.target.value })
+                }
+              />
+            </div>
 
-          <div className="form-field">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              className="input-field"
-              value={personalInfo.email}
-              onChange={(e) => handler(e.target.value, 'email')}
-            />
-          </div>
+            <div className="form-field">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                className="input-field"
+                value={userData.email}
+                onChange={(e) =>
+                  setUserData({ ...userData, email: e.target.value })
+                }
+              />
+            </div>
 
-          <div className="form-field">
-            <label htmlFor="phone">Phone number</label>
-            <input
-              type="text"
-              id="phone"
-              className="input-field"
-              value={personalInfo.phone}
-              onChange={(e) => handler(e.target.value, 'phone')}
-            />
-          </div>
-        </form>
+            <div className="form-field">
+              <label htmlFor="phone">Phone number</label>
+              <input
+                type="text"
+                id="phone"
+                className="input-field"
+                value={userData.phone}
+                onChange={(e) =>
+                  setUserData({ ...userData, phone: e.target.value })
+                }
+              />
+            </div>
+
+            <button onClick={(e) => handleForm(e)}>update</button>
+          </form>
+        )}
       </div>
     </>
   );

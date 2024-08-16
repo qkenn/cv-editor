@@ -1,12 +1,12 @@
-export function CV({ personalInfo, eduInfo }) {
+export function CV({ personalDetails, eduDetails }) {
   return (
     <>
       <div className="cv">
         <div className="cv-personal">
-          <h1 className="cv-name">{personalInfo.fullname}</h1>
+          <h1 className="cv-name">{personalDetails.fullname}</h1>
           <address className="cv-contact">
-            <span>{personalInfo.email}</span>
-            <span>{personalInfo.phone}</span>
+            <span>{personalDetails.email}</span>
+            <span>{personalDetails.phone}</span>
           </address>
         </div>
 
@@ -14,7 +14,7 @@ export function CV({ personalInfo, eduInfo }) {
           <h3 className="cv-section-title">Education</h3>
 
           <ul>
-            {eduInfo.map((entry) => (
+            {eduDetails.map((entry) => (
               <li key={entry.id}>
                 {entry.start} - {entry.end}, {entry.institute}, {entry.study}
               </li>

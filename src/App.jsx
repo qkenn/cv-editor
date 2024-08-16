@@ -1,17 +1,17 @@
-import { Updater } from './components/Updater';
+import { Editor } from './components/Editor';
 import { CV } from './components/CV';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './index.css';
 
 export function App() {
-  const [personalInfo, setPersonalInfo] = useState({
+  const [personalDetails, setPersonalDetails] = useState({
     fullname: 'Kenny McCormick',
     email: 'kenny@mail.com',
     phone: '+324523562',
   });
 
-  const [eduInfo, setEduInfo] = useState([
+  const [eduDetails, setEduDetails] = useState([
     {
       id: uuidv4(),
       institute: 'MIT',
@@ -22,7 +22,7 @@ export function App() {
     {
       id: uuidv4(),
       institute: 'Harvard',
-      study: 'Law',
+      study: 'Computer D',
       start: '12222',
       end: '1455',
     },
@@ -35,35 +35,36 @@ export function App() {
     },
   ]);
 
-  function handlePersonalInfo(value, property) {
-    const clone = { ...personalInfo };
-    clone[property] = value;
+  // function handleEdu(value, id, property) {
+  //   const updatedArray = eduDetails.map((el) => {
+  //     if (el.id == id) {
+  //       el[property] = value;
+  //     }
 
-    setPersonalInfo(clone);
+  //     return el;
+  //   });
+
+  //   setEduDetails(updatedArray);
+  // }
+
+  function savePersonal(data) {
+    setPersonalDetails(data);
   }
 
-  function handleEduInfo(value, id, property) {
-    const updatedArray = eduInfo.map((el) => {
-      if (el.id == id) {
-        el[property] = value;
-      }
-
-      return el;
-    });
-
-    setEduInfo(updatedArray);
+  function updateEdu(data) {
+    setEduDetails(data);
   }
 
   return (
     <>
       <main className="main">
-        <Updater
-          personalInfo={personalInfo}
-          personalHandler={handlePersonalInfo}
-          eduInfo={eduInfo}
-          eduHandler={handleEduInfo}
+        <Editor
+          personalDetails={personalDetails}
+          eduDetails={eduDetails}
+          personalHandler={savePersonal}
+          updateEdu={updateEdu}
         />
-        <CV personalInfo={personalInfo} eduInfo={eduInfo} />
+        <CV personalDetails={personalDetails} eduDetails={eduDetails} />
       </main>
     </>
   );
