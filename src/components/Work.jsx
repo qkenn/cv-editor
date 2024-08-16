@@ -1,18 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 
-export function Education({ eduDetails, eduHandler }) {
+export function Work({ workDetails, workHandler }) {
   const [mode, setMode] = useState('display');
   const [userData, setUserData] = useState({
     id: uuidv4(),
-    institute: '',
-    study: '',
+    company: '',
+    position: '',
+    roles: '',
     start: '',
     end: '',
   });
 
   function handleEditMode(id) {
-    const activeEntry = eduDetails.find((el) => el.id == id);
+    const activeEntry = workDetails.find((el) => el.id == id);
     setUserData(activeEntry);
 
     changeMode('edit');
@@ -21,8 +22,9 @@ export function Education({ eduDetails, eduHandler }) {
   function handleCreateMode() {
     setUserData({
       id: uuidv4(),
-      institute: '',
-      study: '',
+      company: '',
+      position: '',
+      roles: '',
       start: '',
       end: '',
     });
@@ -41,7 +43,7 @@ export function Education({ eduDetails, eduHandler }) {
   function handleEdit(e) {
     e.preventDefault();
 
-    const updatedData = eduDetails.map((el) => {
+    const updatedData = workDetails.map((el) => {
       if (el.id == userData.id) {
         el = userData;
       }
@@ -49,21 +51,21 @@ export function Education({ eduDetails, eduHandler }) {
       return el;
     });
 
-    eduHandler(updatedData);
+    workHandler(updatedData);
   }
 
   function handleCreate(e) {
     e.preventDefault();
 
-    const clonedEntries = [...eduDetails];
+    const clonedEntries = [...workDetails];
     clonedEntries.push(userData);
 
-    eduHandler(clonedEntries);
+    workHandler(clonedEntries);
   }
 
   function handleDelete(id) {
-    const filteredArray = eduDetails.filter((el) => el.id != id);
-    eduHandler(filteredArray);
+    const filteredArray = workDetails.filter((el) => el.id != id);
+    workHandler(filteredArray);
   }
 
   let handler;
@@ -82,13 +84,13 @@ export function Education({ eduDetails, eduHandler }) {
   return (
     <>
       <div className="updater-section">
-        <h2>Education</h2>
+        <h2>Work</h2>
 
         <ul className="entry-list">
-          {eduDetails.map((el) => {
+          {workDetails.map((el) => {
             return (
               <li className="entry" key={el.id}>
-                {el.institute}
+                {el.company}
                 <div>
                   <button onClick={() => handleEditMode(el.id)}>edit</button>
                   <button onClick={() => handleDelete(el.id)}>delete</button>
@@ -101,27 +103,40 @@ export function Education({ eduDetails, eduHandler }) {
         {(mode == 'edit' || mode == 'create') && (
           <form className="form">
             <div className="form-field">
-              <label htmlFor="institute">Institution</label>
+              <label htmlFor="company">Company</label>
               <input
                 type="text"
-                id="institute"
+                id="company"
                 className="input-field"
-                value={userData.institute}
+                value={userData.company}
                 onChange={(e) =>
-                  setUserData({ ...userData, institute: e.target.value })
+                  setUserData({ ...userData, company: e.target.value })
                 }
               />
             </div>
 
             <div className="form-field">
-              <label htmlFor="study">Area of Study</label>
+              <label htmlFor="study">position</label>
               <input
                 type="text"
-                id="study"
+                id="position"
                 className="input-field"
-                value={userData.study}
+                value={userData.position}
                 onChange={(e) =>
-                  setUserData({ ...userData, study: e.target.value })
+                  setUserData({ ...userData, position: e.target.value })
+                }
+              />
+            </div>
+
+            <div className="form-field">
+              <label htmlFor="study">Responsibilities in brief</label>
+              <input
+                type="text"
+                id="roles"
+                className="input-field"
+                value={userData.roles}
+                onChange={(e) =>
+                  setUserData({ ...userData, roles: e.target.value })
                 }
               />
             </div>
@@ -132,7 +147,7 @@ export function Education({ eduDetails, eduHandler }) {
                   <label htmlFor="edu-start">Start Date</label>
                   <input
                     type="text"
-                    id="edu-start"
+                    id="work-start"
                     className="input-field twin-field"
                     value={userData.start}
                     onChange={(e) =>
@@ -145,7 +160,7 @@ export function Education({ eduDetails, eduHandler }) {
                   <label htmlFor="edu-end">End Date</label>
                   <input
                     type="text"
-                    id="edu-end"
+                    id="work-end"
                     className="input-field twin-field"
                     value={userData.end}
                     onChange={(e) =>

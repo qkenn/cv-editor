@@ -38,6 +38,11 @@ body {
   gap: 2rem;
 }
 
+.editor-title {
+  text-align: center;
+  font-size: 2rem;
+}
+
 .updater-section {
   padding: 2rem;
   border-radius: 1rem;

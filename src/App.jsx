@@ -35,19 +35,34 @@ export function App() {
     },
   ]);
 
-  // function handleEdu(value, id, property) {
-  //   const updatedArray = eduDetails.map((el) => {
-  //     if (el.id == id) {
-  //       el[property] = value;
-  //     }
+  const [workDetails, setWorkDetails] = useState([
+    {
+      id: uuidv4(),
+      company: 'Google',
+      position: 'CFO',
+      roles: 'Finance',
+      start: '2005',
+      end: '2008',
+    },
+    {
+      id: uuidv4(),
+      company: 'Facebook',
+      position: 'CFO',
+      roles: 'Finance',
+      start: '2005',
+      end: '2008',
+    },
+    {
+      id: uuidv4(),
+      company: 'Netflix',
+      position: 'CFO',
+      roles: 'Finance',
+      start: '2005',
+      end: '2008',
+    },
+  ]);
 
-  //     return el;
-  //   });
-
-  //   setEduDetails(updatedArray);
-  // }
-
-  function savePersonal(data) {
+  function updatePersonal(data) {
     setPersonalDetails(data);
   }
 
@@ -55,16 +70,26 @@ export function App() {
     setEduDetails(data);
   }
 
+  function updateWork(data) {
+    setWorkDetails(data);
+  }
+
   return (
     <>
       <main className="main">
         <Editor
           personalDetails={personalDetails}
+          personalHandler={updatePersonal}
           eduDetails={eduDetails}
-          personalHandler={savePersonal}
-          updateEdu={updateEdu}
+          eduHandler={updateEdu}
+          workDetails={workDetails}
+          workHandler={updateWork}
         />
-        <CV personalDetails={personalDetails} eduDetails={eduDetails} />
+        <CV
+          personalDetails={personalDetails}
+          eduDetails={eduDetails}
+          workDetails={workDetails}
+        />
       </main>
     </>
   );

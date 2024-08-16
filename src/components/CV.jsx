@@ -1,4 +1,4 @@
-export function CV({ personalDetails, eduDetails }) {
+export function CV({ personalDetails, eduDetails, workDetails }) {
   return (
     <>
       <div className="cv">
@@ -17,6 +17,19 @@ export function CV({ personalDetails, eduDetails }) {
             {eduDetails.map((entry) => (
               <li key={entry.id}>
                 {entry.start} - {entry.end}, {entry.institute}, {entry.study}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="cv-edu">
+          <h3 className="cv-section-title">Professoinal</h3>
+
+          <ul>
+            {workDetails.map((entry) => (
+              <li key={entry.id}>
+                {entry.start} - {entry.end}, {entry.company}, {entry.position},{' '}
+                {entry.roles}
               </li>
             ))}
           </ul>
