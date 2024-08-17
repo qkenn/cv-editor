@@ -124,6 +124,7 @@ export function Education({ eduDetails, eduHandler }) {
                 type="text"
                 id="institute"
                 className="input-field"
+                required
                 value={userData.institute}
                 onChange={(e) =>
                   setUserData({ ...userData, institute: e.target.value })

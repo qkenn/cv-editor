@@ -126,6 +126,7 @@ export function Work({ workDetails, workHandler }) {
                 type="text"
                 id="company"
                 className="input-field"
+                required
                 value={userData.company}
                 onChange={(e) =>
                   setUserData({ ...userData, company: e.target.value })
@@ -138,6 +139,7 @@ export function Work({ workDetails, workHandler }) {
               <input
                 type="text"
                 id="position"
+                required
                 className="input-field"
                 value={userData.position}
                 onChange={(e) =>

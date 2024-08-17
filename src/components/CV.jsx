@@ -5,8 +5,12 @@ export function CV({ personalDetails, eduDetails, workDetails }) {
         <div className="cv-personal">
           <h1 className="cv-name">{personalDetails.fullname}</h1>
           <address className="cv-contact">
-            <span>📨️ {personalDetails.email}</span>
-            <span>📞 {personalDetails.phone}</span>
+            <span>
+              {personalDetails.email && '📨️'} {personalDetails.email}
+            </span>
+            <span>
+              {personalDetails.phone && '📞'} {personalDetails.phone}
+            </span>
           </address>
         </div>
 
@@ -18,10 +22,14 @@ export function CV({ personalDetails, eduDetails, workDetails }) {
               <li key={entry.id}>
                 <div className="cv-entry-container">
                   <div className="entry-duration">
-                    📆 {entry.start} - {entry.end}
+                    {(entry.start || entry.end) && '📆'} {entry.start}
+                    {(entry.start || entry.end) && '-'}
+                    {entry.end}
                   </div>
                   <div className="entry-details">
-                    <h4 className="cv-entry-title">🏫 {entry.institute}</h4>
+                    <h4 className="cv-entry-title">
+                      {entry.institute && '🏫'} {entry.institute}
+                    </h4>
                     <p className="cv-entry-details">{entry.study}</p>
                   </div>
                 </div>
@@ -38,11 +46,12 @@ export function CV({ personalDetails, eduDetails, workDetails }) {
               <li key={entry.id}>
                 <div className="cv-entry-container">
                   <div className="entry-duration">
-                    📆 {entry.start} - {entry.end}
+                    {(entry.start || entry.end) && '📆'} {entry.start}
+                    {(entry.start || entry.end) && '-'} {entry.end}
                   </div>
                   <div className="entry-details">
                     <h4 className="cv-entry-title">
-                      🏢 {entry.company} ({entry.position})
+                      {entry.company && '🏢'} {entry.company} ({entry.position})
                     </h4>
                     <p className="cv-entry-details">{entry.roles}</p>
                   </div>

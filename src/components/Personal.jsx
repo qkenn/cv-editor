@@ -42,6 +42,7 @@ export function Personal({ personalDetails, personalHandler }) {
               <input
                 type="text"
                 id="fullname"
+                required
                 className="input-field"
                 value={userData.fullname}
                 onChange={(e) =>
