@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
-import { Icon } from './Icon';
+import Icon from './Icon';
 
-export function Work({ workDetails, workHandler }) {
+export default function Work({ workDetails, workHandler }) {
   const [mode, setMode] = useState('display');
   const [userData, setUserData] = useState({
     id: uuidv4(),

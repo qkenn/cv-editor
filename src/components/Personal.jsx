@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Icon } from './Icon';
+import Icon from './Icon';
 
-export function Personal({ personalDetails, personalHandler }) {
+export default function Personal({ personalDetails, personalHandler }) {
   const [editMode, setEditMode] = useState(false);
 
   const [userData, setUserData] = useState({
@@ -82,7 +82,7 @@ export function Personal({ personalDetails, personalHandler }) {
                 className="btn btn--full btn--update"
                 onClick={(e) => handleForm(e)}
               >
-                update
+                Update
               </button>
               {editMode && (
                 <button

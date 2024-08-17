@@ -1,4 +1,4 @@
-export function Icon({ type = 'edit' }) {
+export default function Icon({ type = 'edit' }) {
   return (
     <>
       {type == 'edit' && (

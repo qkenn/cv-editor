@@ -1,4 +1,4 @@
-export function CV({ personalDetails, eduDetails, workDetails }) {
+export default function CV({ personalDetails, eduDetails, workDetails }) {
   return (
     <>
       <div className="cv">

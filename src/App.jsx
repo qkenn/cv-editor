@@ -1,10 +1,10 @@
-import { Editor } from './components/Editor';
-import { CV } from './components/CV';
+import Editor from './components/Editor';
+import CV from './components/CV';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './index.css';
 
-export function App() {
+export default function App() {
   const [personalDetails, setPersonalDetails] = useState({
     fullname: 'Kenny McCormick',
     email: 'kenny@mail.com',

@@ -1,8 +1,8 @@
-import { Personal } from './Personal';
-import { Education } from './Education';
-import { Work } from './Work';
+import Personal from './Personal';
+import Education from './Education';
+import Work from './Work';
 
-export function Editor({
+export default function Editor({
   personalDetails,
   personalHandler,
   eduDetails,
