@@ -79,16 +79,6 @@ export default function Work({ workDetails, workHandler }) {
     setMode('display');
   }
 
-  let handler;
-
-  if (mode == 'edit') {
-    handler = (e) => handleEdit(e);
-  }
-
-  if (mode == 'create') {
-    handler = (e) => handleCreate(e);
-  }
-
   return (
     <>
       <div className="updater-section">
@@ -192,10 +182,23 @@ export default function Work({ workDetails, workHandler }) {
             </div>
 
             <div className="btns-full-container">
-              <button className="btn btn--full btn--update" onClick={handler}>
-                {mode == 'create' && 'Save'}
-                {mode == 'edit' && 'Update'}
-              </button>
+              {mode == 'edit' && (
+                <button
+                  className="btn btn--full btn--update"
+                  onClick={(e) => handleEdit(e)}
+                >
+                  Update
+                </button>
+              )}
+              {mode == 'create' && (
+                <button
+                  className="btn btn--full btn--update"
+                  onClick={(e) => handleCreate(e)}
+                >
+                  Save
+                </button>
+              )}
+
               <button
                 className="btn btn--full btn--cancel"
                 onClick={(e) => handleCancel(e)}
