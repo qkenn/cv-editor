@@ -8,57 +8,60 @@ export function App() {
   const [personalDetails, setPersonalDetails] = useState({
     fullname: 'Kenny McCormick',
     email: 'kenny@mail.com',
-    phone: '+324523562',
+    phone: '(415) 876-5432',
   });
 
   const [eduDetails, setEduDetails] = useState([
     {
       id: uuidv4(),
-      institute: 'MIT',
-      study: 'Law',
-      start: '12222',
-      end: '1455',
+      institute: 'Stockholm University',
+      study: 'Business and Economics',
+      start: '2021/04',
+      end: '2023/04',
     },
     {
       id: uuidv4(),
-      institute: 'Harvard',
-      study: 'Computer D',
-      start: '12222',
-      end: '1455',
+      institute: 'Berlin University',
+      study: 'Computer Science',
+      start: '2017/03',
+      end: '2020/05',
     },
     {
       id: uuidv4(),
-      institute: 'Stanford',
-      study: 'Law',
-      start: '12222',
-      end: '1455',
+      institute: 'Oslo Public School',
+      study: 'Upper Secondory',
+      start: '2015/02',
+      end: '2017/02',
     },
   ]);
 
   const [workDetails, setWorkDetails] = useState([
     {
       id: uuidv4(),
-      company: 'Google',
-      position: 'CFO',
-      roles: 'Finance',
-      start: '2005',
-      end: '2008',
+      company: 'DEF Agency',
+      position: 'Web Developer',
+      roles:
+        'Worked on troubleshooting and resolving website issues, Assisted in the development of e-commerce websites using WooCommerce',
+      start: '2018/11',
+      end: 'present',
     },
     {
       id: uuidv4(),
-      company: 'Facebook',
-      position: 'CFO',
-      roles: 'Finance',
-      start: '2005',
-      end: '2008',
+      company: 'GHI Startups',
+      position: 'Front-end Developer',
+      roles:
+        'Developed responsive and interactive web pages using HTML, CSS, and JavaScript, Worked on creating wireframes and prototypes for new projects, Collaborated with designers to implement visual design concepts',
+      start: '2015/08',
+      end: '2018/10',
     },
     {
       id: uuidv4(),
-      company: 'Netflix',
-      position: 'CFO',
-      roles: 'Finance',
-      start: '2005',
-      end: '2008',
+      company: 'JKL Web Solutions ',
+      position: 'Junior Web Developer',
+      roles:
+        'Assisted in the development of simple web pages using HTML, CSS, and JavaScript, Learned and implemented basic web development concepts, Worked on updating and existing websites',
+      start: '2014/07',
+      end: '2015/04',
     },
   ]);
 

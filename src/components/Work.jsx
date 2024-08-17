@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
+import { Icon } from './Icon';
 
 export function Work({ workDetails, workHandler }) {
   const [mode, setMode] = useState('display');
@@ -50,50 +51,67 @@ export function Work({ workDetails, workHandler }) {
 
       return el;
     });
-
     workHandler(updatedData);
+
+    setMode('display');
   }
 
   function handleCreate(e) {
     e.preventDefault();
 
     const clonedEntries = [...workDetails];
-    clonedEntries.push(userData);
-
+    clonedEntries.unshift(userData);
     workHandler(clonedEntries);
+
+    setMode('display');
   }
 
   function handleDelete(id) {
-    const filteredArray = workDetails.filter((el) => el.id != id);
-    workHandler(filteredArray);
+    if (window.confirm('Are you sure ?')) {
+      const filteredArray = workDetails.filter((el) => el.id != id);
+      workHandler(filteredArray);
+    }
+  }
+
+  function handleCancel(e) {
+    e.preventDefault();
+
+    setMode('display');
   }
 
   let handler;
-  let handlerMsg;
 
   if (mode == 'edit') {
     handler = (e) => handleEdit(e);
-    handlerMsg = 'edit';
   }
 
   if (mode == 'create') {
     handler = (e) => handleCreate(e);
-    handlerMsg = 'create';
   }
 
   return (
     <>
       <div className="updater-section">
-        <h2>Work</h2>
+        <h2>💼 Work</h2>
 
         <ul className="entry-list">
           {workDetails.map((el) => {
             return (
               <li className="entry" key={el.id}>
                 {el.company}
-                <div>
-                  <button onClick={() => handleEditMode(el.id)}>edit</button>
-                  <button onClick={() => handleDelete(el.id)}>delete</button>
+                <div className="btns-container">
+                  <button
+                    className="btn btn--edit"
+                    onClick={() => handleEditMode(el.id)}
+                  >
+                    <Icon type="edit" />
+                  </button>
+                  <button
+                    className="btn btn--delete"
+                    onClick={() => handleDelete(el.id)}
+                  >
+                    <Icon type="delete" />
+                  </button>
                 </div>
               </li>
             );
@@ -171,13 +189,29 @@ export function Work({ workDetails, workHandler }) {
               </div>
             </div>
 
-            <button onClick={handler}>{handlerMsg}</button>
+            <div className="btns-full-container">
+              <button className="btn btn--full btn--update" onClick={handler}>
+                {mode == 'create' && 'Save'}
+                {mode == 'edit' && 'Update'}
+              </button>
+              <button
+                className="btn btn--full btn--cancel"
+                onClick={(e) => handleCancel(e)}
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         )}
 
-        <button onClick={() => handleCreateMode()}>
-          {mode == 'create' ? 'cancel' : 'add new'}
-        </button>
+        {mode == 'display' && (
+          <button
+            className="btn btn--full btn--new"
+            onClick={() => handleCreateMode()}
+          >
+            + New
+          </button>
+        )}
       </div>
     </>
   );

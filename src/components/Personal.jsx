@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Icon } from './Icon';
 
 export function Personal({ personalDetails, personalHandler }) {
   const [editMode, setEditMode] = useState(false);
@@ -14,12 +15,24 @@ export function Personal({ personalDetails, personalHandler }) {
     personalHandler(userData);
   }
 
+  function handleCancel(e) {
+    e.preventDefault();
+    setEditMode(false);
+  }
+
   return (
     <>
       <div className="updater-section">
         <div className="updater-header">
-          <h2>Personal Details</h2>
-          <button onClick={() => setEditMode((prev) => !prev)}>edit</button>
+          <div className="editor-title-container">
+            <h2 className="editor-title">👦 Personal Details</h2>
+            <button
+              onClick={() => setEditMode((prev) => !prev)}
+              className="btn btn--edit"
+            >
+              <Icon type={'edit'} />
+            </button>
+          </div>
         </div>
 
         {editMode && (
@@ -63,7 +76,22 @@ export function Personal({ personalDetails, personalHandler }) {
               />
             </div>
 
-            <button onClick={(e) => handleForm(e)}>update</button>
+            <div className="btns-full-container">
+              <button
+                className="btn btn--full btn--update"
+                onClick={(e) => handleForm(e)}
+              >
+                update
+              </button>
+              {editMode && (
+                <button
+                  className="btn btn--full btn--cancel"
+                  onClick={(e) => handleCancel(e)}
+                >
+                  Cancel
+                </button>
+              )}
+            </div>
           </form>
         )}
       </div>

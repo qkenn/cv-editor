@@ -5,31 +5,48 @@ export function CV({ personalDetails, eduDetails, workDetails }) {
         <div className="cv-personal">
           <h1 className="cv-name">{personalDetails.fullname}</h1>
           <address className="cv-contact">
-            <span>{personalDetails.email}</span>
-            <span>{personalDetails.phone}</span>
+            <span>📨️ {personalDetails.email}</span>
+            <span>📞 {personalDetails.phone}</span>
           </address>
         </div>
 
-        <div className="cv-edu">
-          <h3 className="cv-section-title">Education</h3>
+        <div className>
+          <h3 className="cv-title">📚 Education</h3>
 
-          <ul>
+          <ul className="cv-entries">
             {eduDetails.map((entry) => (
               <li key={entry.id}>
-                {entry.start} - {entry.end}, {entry.institute}, {entry.study}
+                <div className="cv-entry-container">
+                  <div className="entry-duration">
+                    📆 {entry.start} - {entry.end}
+                  </div>
+                  <div className="entry-details">
+                    <h4 className="cv-entry-title">🏫 {entry.institute}</h4>
+                    <p className="cv-entry-details">{entry.study}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="cv-edu">
-          <h3 className="cv-section-title">Professoinal</h3>
+        <div>
+          <h3 className="cv-title">💼 Work Experience</h3>
 
-          <ul>
+          <ul className="cv-entries">
             {workDetails.map((entry) => (
               <li key={entry.id}>
-                {entry.start} - {entry.end}, {entry.company}, {entry.position},{' '}
-                {entry.roles}
+                <div className="cv-entry-container">
+                  <div className="entry-duration">
+                    📆 {entry.start} - {entry.end}
+                  </div>
+                  <div className="entry-details">
+                    <h4 className="cv-entry-title">
+                      🏢 {entry.company} ({entry.position})
+                    </h4>
+                    <p className="cv-entry-details">{entry.roles}</p>
+                  </div>
+                </div>
               </li>
             ))}
           </ul>

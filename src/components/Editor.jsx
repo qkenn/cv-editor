@@ -13,8 +13,6 @@ export function Editor({
   return (
     <>
       <div className="updater">
-        <h2 className="editor-title">Editor</h2>
-
         <Personal
           personalDetails={personalDetails}
           personalHandler={personalHandler}
