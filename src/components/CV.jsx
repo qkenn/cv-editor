@@ -22,8 +22,8 @@ export function CV({ personalDetails, eduDetails, workDetails }) {
               <li key={entry.id}>
                 <div className="cv-entry-container">
                   <div className="entry-duration">
-                    {(entry.start || entry.end) && '📆'} {entry.start}
-                    {(entry.start || entry.end) && '-'}
+                    {(entry.start || entry.end) && '📆'} {entry.start}{' '}
+                    {(entry.start || entry.end) && ' - '}
                     {entry.end}
                   </div>
                   <div className="entry-details">
@@ -46,8 +46,9 @@ export function CV({ personalDetails, eduDetails, workDetails }) {
               <li key={entry.id}>
                 <div className="cv-entry-container">
                   <div className="entry-duration">
-                    {(entry.start || entry.end) && '📆'} {entry.start}
-                    {(entry.start || entry.end) && '-'} {entry.end}
+                    {(entry.start || entry.end) && '📆'} {entry.start}{' '}
+                    {(entry.start || entry.end) && ' - '}
+                    {entry.end}
                   </div>
                   <div className="entry-details">
                     <h4 className="cv-entry-title">
