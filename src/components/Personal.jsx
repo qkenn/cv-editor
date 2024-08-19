@@ -13,6 +13,7 @@ export default function Personal({ personalDetails, personalHandler }) {
   function handleForm(e) {
     e.preventDefault();
     personalHandler(userData);
+    setEditMode(false);
   }
 
   function handleCancel(e) {
@@ -25,7 +26,7 @@ export default function Personal({ personalDetails, personalHandler }) {
       <div className="updater-section">
         <div className="updater-header">
           <div className="editor-title-container">
-            <h2 className="editor-title">👦 Personal Details</h2>
+            <h2 className="editor-title">👤 Personal Details</h2>
             <button
               onClick={() => setEditMode((prev) => !prev)}
               className="btn btn--edit"
