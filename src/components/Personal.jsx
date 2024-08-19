@@ -12,12 +12,15 @@ export default function Personal({ personalDetails, personalHandler }) {
 
   function handleForm(e) {
     e.preventDefault();
+
     personalHandler(userData);
+
     setEditMode(false);
   }
 
   function handleCancel(e) {
     e.preventDefault();
+
     setEditMode(false);
   }
 
